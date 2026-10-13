@@ -1,0 +1,17 @@
+/* Self-hosted fonts.
+   Jost (SIL Open Font License, ../fonts/Jost-OFL.txt): one variable file, weights 100 to 900, Latin subset, about 25 KB.
+   Satisfy (Apache 2.0, ../fonts/Satisfy-LICENSE.txt): Latin subset, about 23 KB. Used ONLY for the name and quotations. */
+@font-face {
+  font-family: "Jost";
+  src: url("../fonts/Jost-var-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satisfy";
+  src: url("../fonts/Satisfy-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

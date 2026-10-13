@@ -1,0 +1,105 @@
+/* ==========================================================================
+   SKYLINE BLUEPRINT: BASE (reset, typography, page shell)
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: var(--lh-body);
+  color: var(--c-text);
+  background-color: var(--c-backdrop);
+  background-image: var(--backdrop-image);
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg, video { max-width: 100%; }
+img { display: block; height: auto; }
+
+a { color: var(--c-primary); text-decoration: none; transition: color var(--t-fast); }
+a:hover { color: var(--c-accent); }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--c-navy);
+  line-height: 1.25;
+  margin: 0 0 14px;
+}
+p { margin: 0 0 16px; }
+ul, ol { margin: 0 0 16px; padding-left: 20px; }
+hr { border: 0; border-top: 1px solid var(--c-line); margin: 24px 0; }
+
+:focus-visible { outline: 3px solid var(--c-accent); outline-offset: 2px; }
+
+.skip-link {
+  position: absolute; left: -999px; top: 8px; z-index: 100000;
+  background: var(--c-ink); color: #fff; padding: 10px 16px; border-radius: var(--r-xs);
+}
+.skip-link:focus { left: 8px; color: #fff; }
+
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* ---------- Icons (inline SVG sprite injected by js/icons.js) ---------- */
+.icon { width: 1em; height: 1em; fill: currentColor; flex: none; vertical-align: -0.125em; }
+.icon--stroke { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- Page shell ---------- */
+/* The boxed white page that floats over the backdrop */
+.site {
+  width: min(var(--page-w), 100%);
+  margin: var(--page-gap-top) auto;
+  background: var(--c-surface);
+  position: relative;
+}
+
+[id] { scroll-margin-top: 96px; }  /* anchors clear the sticky header */
+
+.container { padding-left: var(--gutter); padding-right: var(--gutter); }
+
+.section { padding-top: var(--section-pad); padding-bottom: var(--section-pad); }
+.section--flush-top { padding-top: 0; }
+.section--grey { background: var(--c-surface-grey); }
+
+/* Grid helpers */
+.grid { display: grid; gap: 20px; }
+.grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.grid--center { align-items: center; }
+
+/* ---------- Prose ---------- */
+.prose { color: var(--c-text); }
+.prose p { text-align: justify; line-height: 25.5px; }
+.prose a:not([class]) { text-decoration: underline; }
+.prose ul { list-style: disc; }
+.prose li { margin-bottom: 8px; }
+.prose h2, .prose h3 { color: var(--c-primary); font-size: var(--fs-h-section); }
+
+.heading-blue {
+  color: var(--c-primary);
+  font-size: var(--fs-h-section);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.heading-centre { text-align: center; }
+
+/* Feature photo: 15px radius, warm 5px frame */
+.photo-frame {
+  border-radius: var(--r-pill);
+  border: 5px solid var(--c-frame);
+  width: 100%;
+  object-fit: cover;
+}

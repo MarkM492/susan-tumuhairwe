@@ -1,0 +1,147 @@
+/* ==========================================================================
+   SUSAN TUMUHAIRWE: DESIGN TOKENS (Skyline Blueprint, rebranded)
+   Single source of truth. Every colour, size, radius and shadow used by the
+   components is defined here and measured from the reference site.
+   Per client: change the BRAND block (and --backdrop-image). Page sprinkles are at the bottom.
+   ========================================================================== */
+
+:root {
+  /* ---------- BRAND (swap these per client) ---------- */
+  --c-primary:       #2d6a3e;  /* links, headings accent, active states, table headers */
+  --c-primary-2:     #2f7142;  /* buttons, active tabs, mobile bar (near-identical twin) */
+  --c-accent:        #35854f;  /* hover, highlights */
+  --c-navy:          #12301d;  /* nav text, strong headings, buttons text */
+  --c-navy-deep:     #0f2a1a;  /* footer background */
+  --c-nav-active:    #2d6a3e;  /* active / hover menu item */
+
+  /* Tile ramp: five steps, dark anchor first, then light to deep */
+  --c-tile-1:        #000000;
+  --c-tile-2:        #37845a;
+  --c-tile-3:        #2d6a3e;
+  --c-tile-4:        #235a34;
+  --c-tile-5:        #1a4529;
+
+  /* ---------- SPRINKLE (small accents only; the palette above stays green on every page) ---------- */
+  --c-gold:          #c9a24a;  /* the gold arc in both logos */
+  --c-gold-deep:     #8f6410;
+  --c-sprinkle:      #c9a24a;  /* accent used for leaf marks, dividers, rail dots, the banner tagline: gold by default */
+  --c-sprinkle-soft: #e6cd8a;  /* the same accent, light enough to read on dark green */
+
+  /* ---------- NEUTRALS ---------- */
+  --c-ink:           #1b241e;  /* top bar, search overlay */
+  --c-ink-line:      #2f3d34;  /* footer divider */
+  --c-banner-fallback:#1d2b22; /* banner colour behind the photo */
+  --c-text:          #676767;  /* body copy */
+  --c-text-strong:   #3c3c3c;
+  --c-text-table:    #606060;
+  --c-text-muted:    #999999;
+  --c-text-on-dark:  #bbbbbb;  /* footer links */
+  --c-text-on-dark-2:#aaaaaa;  /* footer small print */
+  --c-surface:       #ffffff;
+  --c-surface-grey:  #e9ece9;  /* quick-link strip, grey panels */
+  --c-surface-row:   #eef0ee;  /* table rows */
+  --c-surface-soft:  #f4f6f4;  /* idle accordion, button rows */
+  --c-surface-warm:  #f6f3ee;  /* sidebar widget box */
+  --c-line:          #e6e6e6;
+  --c-frame:         #c1b9b3;  /* 5px frame around feature photos */
+
+  /* ---------- TINTS & SEMANTIC ---------- */
+  --c-tint-blue:     rgba(111, 174, 133, 0.20);
+  --c-tint-grey:     rgba(207, 207, 207, 0.20);
+  --c-icon-circle:   #6fae85;  /* light-blue icon disc */
+  --c-infobox-title: #0b2414;
+  --c-cta-orange:    #a85a12;
+  --c-cta-blue:      #2f7142;
+  --c-download:      #2f7142;  /* file-library download button */
+  --c-readmore:      #2f7142;  /* "Read More" on post lists */
+
+  /* News category chips (overlay bar = same colour at 50%) */
+  --c-chip-trending: #2f7d4b;
+  --c-chip-media:    #a8306f;
+  --c-chip-events:   #a85a12;
+  --c-caption-bar:   rgba(18, 48, 29, 0.55);
+  --c-bar-trending:  #1a4529;  /* caption bar base for the first news category */
+  --c-on-dark-hover: #bfe3c9;  /* link hover on dark photo areas (breadcrumbs) */
+  --c-photo-bg:      #dfe7e0;  /* flat fill shown behind photos until they load / when missing */
+  --c-line-warm:     #e7e2da;  /* hairlines inside the warm sidebar widget */
+  --c-file-pdf:      #c80000;  /* file-type badges (universal conventions) */
+  --c-file-doc:      #2b579a;
+  --c-file-xls:      #217346;
+  --c-error:         #b3261e;  /* form validation */
+  --c-border-input:  #dddddd;
+
+  /* ---------- TYPE ---------- */
+  --font-body:  "Jost", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --font-nav:   "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
+  --font-script: "Satisfy", "Segoe Script", "Brush Script MT", cursive;   /* the name Susan Tumuhairwe, and quotations only */
+
+  --fs-banner-title: 55px;   /* inner-page H1 (lh 71.5px) */
+  --fs-topbar:       30px;   /* organisation name on the top bar */
+  --fs-h2:           30px;   /* article / post titles */
+  --fs-h-section:    26px;   /* in-content blue headings */
+  --fs-h-card:       22px;   /* service card + info box titles */
+  --fs-tile:         21px;   /* quick-link tile titles */
+  --fs-footer-h:     20px;
+  --fs-lead:         17px;   /* side menu, team role */
+  --fs-btn:          16px;
+  --fs-body:         15px;   /* body + nav */
+  --fs-small:        14px;   /* table cells, footer, mega-menu links */
+  --fs-xs:           13px;   /* file library, widgets */
+
+  --lh-body:   1.7;          /* 25.5px at 15px */
+  --lh-service: 27px;
+
+  /* ---------- LAYOUT ---------- */
+  --page-w:        1200px;   /* the boxed white page */
+  --page-gap-top:  40px;     /* sky visible above the box */
+  --gutter:        30px;     /* inner side padding => 1140px content column */
+  --topbar-h:      50px;
+  --header-h:      80px;
+  --banner-h:      280px;
+  --hero-h:        435px;
+  --section-pad:   40px;
+  --tile-w:        228px;
+  --tile-h:        246px;
+  --sidebar-w:     319px;
+  --sidemenu-w:    276px;
+
+  /* ---------- SHAPE ---------- */
+  --r-xs:   3px;    /* tiles, post images, widget box, accordion */
+  --r-sm:   4px;    /* read-more */
+  --r-md:   5px;    /* search button */
+  --r-lg:   8px;    /* download button */
+  --r-card: 10px;   /* info boxes */
+  --r-pill: 15px;   /* CTA buttons, tabs, feature cards, photo frame */
+  --r-round: 100%;  /* icon discs, portraits, header icon buttons */
+
+  /* ---------- ELEVATION ---------- */
+  --sh-header: 0 0 30px 0 rgba(0, 0, 0, 0.20);   /* sticky header + mega menu */
+  --sh-card:   0 0 40px 0 rgba(0, 0, 0, 0.10);   /* service cards, round badges */
+  --sh-soft:   0 0 10px 0 rgba(0, 0, 0, 0.15);
+  --sh-tint:   0 0 10px 0 rgba(150, 229, 170, 0.18);
+  --sh-drawer: 0 0 35px -10px rgba(0, 0, 0, 0.25);
+
+  /* ---------- MOTION ---------- */
+  --t-fast:  0.2s linear;       /* menus */
+  --t-base:  0.3s ease-in-out;  /* tiles, cards */
+  --t-drawer: 0.3s ease-out;    /* mobile drawer */
+
+  /* ---------- PAGE BACKDROP ---------- */
+  /* Flat colour by default. For a client with a suitable wide, calm photo (2400px+),
+     set --backdrop-image: url("../img/backdrop.jpg"). No gradients anywhere in the system. */
+  --c-backdrop:      #cbd8cd;
+  --backdrop-image:  none;
+  --hero-image:      none;     /* per-slide photos are set inline on each .hero__slide */
+  --banner-image:    none;     /* per-page: style="--banner-image:url(img/banner.jpg)" (pre-darkened photo) */
+}
+
+/* ==========================================================================
+   PAGE SPRINKLES: <html data-venture="...">. The palette is the same green on every page.
+   Each venture page borrows ONE small accent from its logo. Flat colours only.
+   ========================================================================== */
+:root[data-venture="nourish"] {            /* Nourish & Thrive: the olive leaf of its logo */
+  --c-sprinkle: #8aa64a; --c-sprinkle-soft: #d3e3a4;
+}
+:root[data-venture="prosper"] {            /* Women Prosper: the pink of its logo (never the purple) */
+  --c-cta-orange: #a8306f; --c-sprinkle: #d05a9e; --c-sprinkle-soft: #f4bddb;
+}

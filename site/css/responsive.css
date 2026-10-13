@@ -1,0 +1,103 @@
+/* ==========================================================================
+   SKYLINE BLUEPRINT: RESPONSIVE
+   Breakpoints mirror the reference site's own media queries:
+     >= 1200  full boxed page (default styles)
+     <= 1024  tablet landscape: tighter grids
+     <= 767   phone / tablet portrait: drawer menu, single column
+     <= 480   small phone: smaller type
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  .site { margin-top: 0; }
+}
+
+@media (max-width: 1024px) {
+  .quick__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .tile { padding: 32px 28px 20px; }
+  .quick__grid .tile:nth-child(4) { grid-column: auto; }
+  .services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .team-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .footer__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .spec { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .nav__link { padding: 0 11px; font-size: 14px; }
+  .nav__link[aria-current="page"]::after { left: 11px; right: 11px; }
+  .person--lead .person__photo { width: 380px; height: 380px; }
+}
+
+
+@media (max-width: 767px) {
+  /* Header collapses to logo + two round buttons; list lives in the drawer */
+  .topbar { display: none; }
+  .nav__list { display: none; }
+  .nav__toggle { display: grid; order: -1; margin-right: 10px; }
+  .nav { gap: 0; }
+
+  .header { height: 80px; }
+
+  .hero { height: 300px; }
+  .hero__caption { font-size: 11px; min-height: 48px; padding: 8px 16px; }
+
+  /* Tiles stack as full-width 96px rows: icon left, label right */
+  .quick { padding: 20px; }
+  .quick__grid { grid-template-columns: 1fr; gap: 10px; }
+  .tile { display: flex; align-items: center; gap: 20px; min-height: 96px; padding: 12px 20px; }
+  .tile__icon { width: 44px; height: 44px; margin: 0; }
+  .tile__title { font-size: 19px; font-weight: 600; line-height: 22px; }
+
+  .mosaic { grid-template-columns: 1fr; grid-template-rows: none; padding: 20px; }
+  .mosaic__lead { grid-row: auto; min-height: 220px; }
+
+  .banner { justify-content: center; text-align: center; }
+  .banner__title { font-size: 30px; line-height: 39px; }
+  .crumbs { justify-content: center; font-size: 14px; }
+
+  .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; }
+  .spec { grid-template-columns: 1fr; }
+  .services { grid-template-columns: 1fr; }
+  .layout-menu, .layout-sidebar { grid-template-columns: 1fr; }
+  .post-row { grid-template-columns: 1fr; }
+  .post-row__title { font-size: 22px; line-height: 30px; }
+  .contacts, .contacts__cards { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 30px; }
+  .person__photo { width: 100%; height: auto; aspect-ratio: 1; }
+  .person--lead .person__photo { width: 100%; max-width: 320px; height: auto; aspect-ratio: 1; }
+
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .tabs__nav { flex-direction: column; }
+  .tabs__tab { width: 100%; justify-content: center; }
+  .btn-row { flex-direction: column; align-items: flex-start; }
+
+  .accordion__head { padding: 18px 18px 18px 22px; }
+  .accordion__body { padding: 22px 20px 6px; }
+
+  .footer__grid { grid-template-columns: 1fr; padding: 30px var(--gutter); gap: 30px; }
+  .footer__small { flex-direction: column; }
+
+  .files th:nth-child(3), .files td:nth-child(3),
+  .files th:nth-child(2), .files td:nth-child(2) { display: none; }
+  .files-wrap { overflow-x: auto; }
+
+  .heading-blue, .prose h2 { font-size: 22px; }
+}
+
+@media (max-width: 480px) {
+  :root { --gutter: 20px; }
+  .team-grid { gap: 28px 12px; }
+  .person__name { font-size: 16px; }
+  .post-card__body { padding: 20px; }
+  .post-card__title, .article__title { font-size: 24px; }
+  .filesearch { flex-direction: column; }
+  .btn-download { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .js .reveal { opacity: 1; transform: none; }
+}
+
+@media print {
+  body { background: #fff; }
+  .topbar, .header, .to-top, .drawer, .search-overlay { display: none !important; }
+  .site { width: 100%; margin: 0; }
+}
