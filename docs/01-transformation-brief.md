@@ -84,5 +84,28 @@ Feedback: the phone view was still too long, and some directly related content s
 | Tighter rhythm | 20px side gutter, smaller section padding, 120px intro photos, 108px banners, compact service cards, headings 19.5px, call-to-action paragraphs fold with Read more, buttons shrink so pairs sit side by side |
 Phone length at 390px (screens): Home 3.9 to 2.6, Nourish & Thrive 3.9 to 2.6, Women Prosper 3.0 to 2.2, Speaking 2.6 to 2.0, Contact 1.8 to 1.6.
 
+## Phase 5: breathing space
+Feedback: with so many colours and so much information the pages felt compact; more vertical white space was wanted even at the cost of more scrolling.
+
+| Change | Detail |
+|---|---|
+| Section padding | 76px top and bottom on desktop (52px on phones), up from the blueprint's tighter rhythm |
+| Gaps | Split layouts 72px, card grids 32px, service rows 44px; `.stack` spacer 56px |
+| Panels | Grey panels 44px 40px; call-to-action band 64px 40px; three card wrappers switched from `panel-grey` to `panel-plain` so fewer grey boxes sit against each other; info boxes neutral |
+| Result at 390px (screens) | Home 3.3, Nourish & Thrive 3.5, Women Prosper 2.9, Speaking 2.6, Contact 1.9 |
+All of it lives in `client.css` section 10, so it can be tuned in one place (`--section-pad` and the gap values).
+
+## Phase 6: scroll-in animation
+Feedback: add in-flow animations as the reader scrolls so they are drawn down the page, in the way vce-environment.com does it. That site uses WOW.js with animate.css (`fadeInUp`, `fadeInRight`, delays in .2s steps); we reproduce the feel with a small IntersectionObserver and CSS transitions (no library, no copied code).
+
+| Element | Effect |
+|---|---|
+| Section headings, intros, prose, panels, cards, tiles, rail rows, gallery, footer columns, form | Fade up 42px (30px on phones) over .95s, with a short stagger between siblings (`--anim-delay`) |
+| Split-layout photos | Slide in from the right or left (64px) as the text fades up |
+| Banner text and emblem | Play once on load |
+| Heading leaf divider | The line draws out from the centre just after its heading appears |
+Rules: each element animates once, then the script removes the classes (`settle()`) so hover effects behave normally; reveal starts when an element is 9% inside the viewport; with `prefers-reduced-motion` or no IntersectionObserver nothing is hidden. Code: `client.js` section 3, `client.css` section 11.
+Checked at 1440px and 390px on all five pages: nothing left hidden, no horizontal overflow while slide-ins run, no script errors.
+
 ## Checking page length on a phone
 `python3` with Playwright: open each page at 390x844 and divide `document.documentElement.scrollHeight` by 844.

@@ -342,3 +342,130 @@ html { overflow-y: scroll; scrollbar-gutter: stable; -webkit-text-size-adjust: 1
 @media (max-width: 400px) {
   .brand__text { font-size: 27px; }
 }
+
+/* ==========================================================================
+   10. BREATHING SPACE
+   More white space between elements, especially vertically, and fewer competing colours:
+   every info card is one calm neutral card with the same green icon, and card groups sit on plain
+   white instead of a grey box. Spacing only; no layout changes.
+   ========================================================================== */
+:root { --section-pad: 76px; }
+
+.section { padding-bottom: var(--section-pad); }
+.section:not(.section--flush-top) { padding-top: 60px; }
+.section--flush-top { padding-top: 0; }
+
+/* headings, intros, paragraphs */
+.heading-blue, .prose h2 { margin-bottom: 22px; line-height: 1.3; }
+.heading-blue::after, .prose h2::after { margin-top: 18px; }
+.heading-centre { margin-bottom: 22px; }
+.section-intro { max-width: 700px; margin-bottom: 52px; }
+.section-intro p { line-height: 30px; margin-bottom: 0; }
+.prose p { line-height: 29px; margin-bottom: 22px; }
+.prose .lede { margin-top: 6px; }
+.btn-row { gap: 18px 24px; margin-top: 36px; }
+
+/* layout */
+.split { gap: 72px; }
+.grid { gap: 32px; }
+.services { gap: 44px; }
+.gallery { gap: 28px; }
+.gallery__cap { margin-top: 12px; }
+.quick { padding: 34px var(--gutter) 38px; }
+.mosaic { gap: 28px; padding: 56px 10px; }
+.panel-grey { padding: 44px 40px; }
+.cta { padding: 64px 40px; }
+.cta .btn-row { margin-top: 32px; }
+.panel-plain { padding: 0; }
+.stack { margin-top: 56px; }
+
+/* cards: one calm style */
+.infobox, .infobox--tint-blue, .infobox--tint-grey {
+  padding: 32px 30px; background: var(--c-surface-soft); box-shadow: none; border: 1px solid var(--c-line); row-gap: 4px;
+}
+.infobox__icon, .infobox--dark-icon .infobox__icon { background: var(--c-icon-circle); }
+.infobox__text { margin-top: 18px; line-height: 28px; }
+.service__body { padding: 52px 28px 34px; }
+.service__title { margin-bottom: 18px; }
+.service__text { line-height: 29px; }
+.tile__icon { margin-bottom: 30px; }
+
+/* footer */
+.footer__grid { padding: 64px var(--gutter) 56px; gap: 40px; }
+.footer__title { margin-bottom: 26px; }
+.footer__list li { padding-bottom: 14px; }
+.footer__small { padding: 30px 0 34px; }
+
+/* contact + forms */
+.form { gap: 24px; }
+.form__field { gap: 10px; }
+.contact-layout { gap: 64px !important; }
+
+@media (max-width: 1024px) {
+  .split { gap: 48px; }
+  .grid { gap: 28px; }
+  .panel-grey { padding: 36px 28px; }
+}
+
+@media (max-width: 767px) {
+  :root { --section-pad: 52px; }
+  .section:not(.section--flush-top) { padding-top: 32px; }
+  .heading-blue, .prose h2 { margin-bottom: 14px; }
+  .heading-blue::after, .prose h2::after { margin-top: 13px; }
+  .section-intro { margin-bottom: 28px; }
+  .section-intro p, .prose p { font-size: 15px; line-height: 27px; margin-bottom: 18px; }
+  .btn-row { gap: 12px; margin-top: 26px; }
+  .cta .btn-row { margin-top: 22px; }
+
+  .split { gap: 28px; }
+  .split > img { height: 140px; }
+  .grid { gap: 18px; }
+  .rail { gap: 18px; padding-top: 6px; padding-bottom: 20px; }
+  .rail-dots { margin: 0 0 10px; }
+  .quick { padding: 20px var(--gutter) 14px; }
+  .quick__grid.rail { gap: 14px; }
+  .panel-grey { padding: 26px 18px; --rail-bleed: 18px; }
+  .cta { padding: 34px 18px; }
+  .stack { margin-top: 24px; }
+
+  .infobox, .infobox--tint-blue, .infobox--tint-grey { padding: 26px 20px 24px; row-gap: 10px; }
+  .infobox__text { margin-top: 0; line-height: 26px; }
+  .service__body { padding: 44px 20px 18px; }
+  .service__text { line-height: 26px; }
+
+  .more__btn, .clamp-toggle { margin-top: 16px; margin-bottom: 8px; }
+  .clamp-toggle { margin-top: 2px; }
+  .more__chips { gap: 8px; margin: 12px 0 14px; }
+  .more__chips li { padding: 4px 13px; }
+  .more.is-open > .more__extra { padding-top: 6px; }
+
+  .footer__grid { padding: 34px var(--gutter) 10px; gap: 26px; }
+  .footer__title { margin-bottom: 14px; }
+  .footer__list li { padding-bottom: 10px; }
+  .footer__small { padding: 20px 0 26px; gap: 6px; }
+  .contact-layout { gap: 30px !important; }
+  .form { gap: 18px; }
+}
+
+/* ==========================================================================
+   11. SCROLL-IN ANIMATION (tags are added by js/client.js and removed after the entrance)
+   Fade up, slide in from the side, staggered by --anim-delay. The leaf divider under a heading draws itself in.
+   ========================================================================== */
+.anim {
+  opacity: 0; transform: translate3d(0, 42px, 0);
+  transition: opacity .95s cubic-bezier(.22, .7, .2, 1) var(--anim-delay, 0s), transform .95s cubic-bezier(.22, .7, .2, 1) var(--anim-delay, 0s);
+  will-change: opacity, transform;
+}
+.anim--right { transform: translate3d(64px, 0, 0); }
+.anim--left  { transform: translate3d(-64px, 0, 0); }
+.anim--zoom  { transform: scale(.88); }
+.anim.is-in { opacity: 1; transform: none; }
+.heading-blue.anim::after, .prose h2.anim::after { transform: scaleX(0); transition: transform .8s cubic-bezier(.22, .7, .2, 1) calc(var(--anim-delay, 0s) + .45s); }
+.heading-blue.anim.is-in::after, .prose h2.anim.is-in::after { transform: scaleX(1); }
+@media (max-width: 767px) {
+  .anim { transform: translate3d(0, 30px, 0); transition-duration: .8s; }
+  .anim--zoom { transform: scale(.9); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .anim { opacity: 1 !important; transform: none !important; transition: none !important; }
+}

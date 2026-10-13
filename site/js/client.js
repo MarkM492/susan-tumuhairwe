@@ -124,4 +124,65 @@
     items3.forEach(function (it) { if (it.open && it.btn.getBoundingClientRect().bottom < line) it.fold(); });
   };
   window.addEventListener('scroll', function () { if (!ticking) { ticking = true; window.requestAnimationFrame(watch); } }, { passive: true });
+
+  /* ---- 3. Scroll-in animation (the way vce-environment.com does it: fade up, slide in from the side, staggered) ----
+     Elements are tagged here, so the markup stays clean. Each one eases in the first time it scrolls into view and
+     the tag is removed afterwards, so hover effects behave normally. Nothing animates for reduced-motion readers,
+     and without JavaScript everything is simply visible. */
+  if (!reduce && 'IntersectionObserver' in window) {
+    var tagged = [];
+    var tag = function (el, kind, delay) {
+      if (!el || el.classList.contains('anim') || el.closest('.anim')) return;
+      if (phone.matches && el.closest('.more__extra')) return;      // folded content has its own opening animation
+      el.classList.add('anim', 'anim--' + kind);
+      el.style.setProperty('--anim-delay', (delay || 0).toFixed(2) + 's');
+      tagged.push(el);
+    };
+    var seq = function (list, kind, base, step) {
+      list.forEach(function (el, i) { tag(el, kind, base + Math.min(i, 6) * step); });
+    };
+    var each = function (sel, fn) { $$(sel).forEach(fn); };
+
+    // banner titles arrive on load, one line after another
+    each('.banner__text', function (b) { seq(Array.prototype.slice.call(b.children), 'up', 0.05, 0.14); });
+    each('.banner__emblem', function (e) { tag(e, 'zoom', 0.25); });
+    // whole panels first, so their contents are not animated a second time
+    each('.panel-grey, .cta, .quote-panel', function (el) { tag(el, 'up', 0); });
+    // text blocks: heading, copy, buttons one after another
+    each('.prose, .section-intro', function (b) { seq(Array.prototype.slice.call(b.children), 'up', 0, 0.13); });
+    each('main > section > .heading-blue, main > section > .heading-centre', function (h) { tag(h, 'up', 0); });
+    // photos slide in from the side they sit on
+    each('.split', function (sp) {
+      var img = sp.querySelector(':scope > img'); if (!img) return;
+      var last = sp.lastElementChild === img;
+      tag(img, phone.matches ? 'up' : (last ? 'right' : 'left'), 0.1);
+    });
+    // card groups: on phones the swipe row arrives as one piece, elsewhere the cards stagger
+    ['.rail', '.gallery'].forEach(function (sel) {
+      each(sel, function (r) {
+        if (phone.matches || r.classList.contains('rail--all')) { tag(r.closest('.rail-wrap') || r, 'up', 0.05); return; }
+        seq(Array.prototype.slice.call(r.children), 'up', 0.05, 0.16);
+      });
+    });
+    each('.quick__grid', function (g) { if (!g.classList.contains('anim')) seq(Array.prototype.slice.call(g.children), 'up', 0, 0.14); });
+    each('.footer__grid > div', function (d, i) { tag(d, 'up', i * 0.14); });
+    each('.form, .contact-layout > div', function (el, i) { tag(el, 'up', i * 0.14); });
+
+    var settle = function (el) {                     // restore normal hover behaviour once the entrance is over
+      var d = parseFloat(el.style.getPropertyValue('--anim-delay')) || 0;
+      window.setTimeout(function () {
+        el.classList.remove('anim', 'anim--up', 'anim--right', 'anim--left', 'anim--zoom', 'is-in');
+        el.style.removeProperty('--anim-delay');
+      }, (d + 1.1) * 1000 + 150);
+    };
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        e.target.classList.add('is-in');
+        settle(e.target);
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -9% 0px' });
+    tagged.forEach(function (el) { io.observe(el); });
+  }
 })();

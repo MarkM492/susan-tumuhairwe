@@ -12,10 +12,10 @@ site/                  what gets published (Netlify publish dir)
   speaking-and-workshops.html
   contact.html         Netlify Form
   css/ js/ fonts/ images/ favicon.svg
-    css/client.css     everything that is Susan-specific (frame, script type, top-bar branch edge, accents, rails, fold blocks, phone layout, tab bar)
+    css/client.css     everything that is Susan-specific (frame, script type, top-bar branch edge, accents, rails, fold blocks, white space, scroll-in animation, phone layout, tab bar)
     css/art.css        GENERATED flat artwork (leaf divider mask, banner branch)
     css/tokens.css     colours; the two page sprinkles are at the bottom
-    js/client.js       swipe rails, Read more / "I want to know more" with auto-fold on scroll
+    js/client.js       swipe rails, Read more / "I want to know more" with auto-fold on scroll, scroll-in animation
     fonts/             Jost (body) and Satisfy (the name and quotations only)
 tools/
   build_site.py        regenerates the 5 pages from shared parts + data

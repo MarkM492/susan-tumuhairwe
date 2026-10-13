@@ -424,7 +424,7 @@ def body_home():
                        + "</div>", "Explore the three ventures"), sid="ventures")
 
     steps = section(heading("Small, Consistent Steps, Taken Together", "Three simple moves, from your first message to lasting change.") + more(f"""
-        <div class="panel-grey"><div class="grid grid--3 {rail("How it works")}">""" +
+        <div class="panel-plain"><div class="grid grid--3 {rail("How it works")}">""" +
                     infobox("chat", "Start the conversation", "Book a consultation and tell me where you are right now: your health, your goals, your challenges. I read every message myself.") +
                     infobox("edit", "Get a personalised plan", "No one-size-fits-all advice. Together we shape practical, evidence-informed strategies that fit your real, everyday life.") +
                     infobox("chart", "Build lasting change", "With encouragement and accountability, small choices become habits, and habits become energy, confidence and lasting wellbeing.") +
@@ -521,7 +521,7 @@ def body_prosper():
           <h2 class="heading-blue heading-centre">More Than an Income: a Way to Grow</h2>
           <p>I founded Women Prosper as a community that empowers women to build an additional income while developing the confidence, skills and leadership needed to thrive. You&rsquo;ll find support, mentorship and encouragement here.</p>
         </div>
-        """ + more(f"""<div class="panel-grey" style="margin-top:24px"><div class="grid grid--3 {rail("What you will find")}">""" +
+        """ + more(f"""<div class="panel-plain" style="margin-top:24px"><div class="grid grid--3 {rail("What you will find")}">""" +
                          infobox("lightbulb", "No experience needed", "Just a willingness to learn, grow and take action. Everything else can be taught.") +
                          infobox("users", "Real mentorship", "From someone who has built what she teaches.") +
                          infobox("heart", "A community", "That celebrates every win with you.") +
@@ -564,7 +564,7 @@ def body_speaking():
 
     expertise = section(heading("Six Sessions I&rsquo;m Asked for Most",
                                 "Every session is tailored to your audience, combining evidence-informed knowledge with practical strategies participants can apply immediately.") + f"""
-        """ + more(f"""<div class="panel-grey" style="margin-bottom:30px"><div class="grid grid--2 {rail("How I speak")}">""" +
+        """ + more(f"""<div class="panel-plain" style="margin-bottom:30px"><div class="grid grid--2 {rail("How I speak")}">""" +
                         infobox("target", "Practical", "Simple and actionable strategies to implement immediately.") +
                         infobox("users", "Engaging", "Interactive, thought-provoking, built for participation.") +
                         infobox("book", "Evidence-informed", "Grounded in current nutrition, wellness and leadership principles.") +
