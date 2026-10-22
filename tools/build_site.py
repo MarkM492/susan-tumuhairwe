@@ -39,6 +39,11 @@ def icon(name, cls=""):
     return f'<svg class="{c}" aria-hidden="true"><use href="#i-{name}"></use></svg>'
 
 
+def soc(name):
+    """Social icon as a round badge in the network's own colour (Instagram red-pink, Facebook blue, TikTok black)."""
+    return f'<span class="soc soc--{name}">{icon(name)}</span>'
+
+
 def si(name):  # stroked icon
     return icon(name, "icon--stroke")
 
@@ -125,10 +130,10 @@ def topbar(active="Home"):
         (MAPS, "Office location: Interservice Tower, Lumumba Avenue, Kampala", "pin", ""),
     ]
     lis = "".join(f'<li><a href="{h}" aria-label="{n}">{icon(i, c)}</a></li>' for h, n, i, c in links)
-    lis += "".join(f'<li class="topbar__soc"><a href="{u}" aria-label="{n}: {hdl}" target="_blank" rel="noopener">{icon(i)}</a></li>'
+    lis += "".join(f'<li class="topbar__soc"><a href="{u}" aria-label="{n}: {hdl}" target="_blank" rel="noopener">{soc(i)}</a></li>'
                    for i, n, hdl, u in SOCIAL)
     return f"""<div class="topbar">
-      <p class="topbar__title"><span class="topbar__text">{TOPBAR_TEXT.get(active, ROLE)}</span>{topbar_branch()}</p>
+      <p class="topbar__title"><span class="topbar__text"><span class="topbar__ghost" aria-hidden="true">{ROLE}</span><span class="topbar__label">{TOPBAR_TEXT.get(active, ROLE)}</span></span>{topbar_branch()}</p>
       <ul class="topbar__social">{lis}</ul>
     </div>"""
 
@@ -196,7 +201,7 @@ def footer():
             <li>{icon("phone")}<a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a></li>
             <li>{icon("pin")}<a href="{MAPS}">{OFFICE}</a></li>
           </ul>
-          <ul class="footer__list footer__social">{"".join(f'<li>{icon(i)}<a href="{u}" target="_blank" rel="noopener" aria-label="{n}">{hdl}</a></li>' for i, n, hdl, u in SOCIAL)}</ul>
+          <ul class="footer__list footer__social">{"".join(f'<li>{soc(i)}<a href="{u}" target="_blank" rel="noopener" aria-label="{n}">{hdl}</a></li>' for i, n, hdl, u in SOCIAL)}</ul>
         </div>
         <div>
           <h3 class="footer__title">Explore</h3>
@@ -405,19 +410,12 @@ def body_home():
         '<a class="tile" href="women-prosper.html"><span class="tile__icon tile__icon--logo"><img src="images/logo-women-prosper.webp" alt="" width="72" height="72"></span><h3 class="tile__title">Women Prosper</h3></a>'
         f'<a class="tile" href="speaking-and-workshops.html"><span class="tile__icon">{si("mic")}</span><h3 class="tile__title">Speaking &amp; Workshops</h3></a>')
 
-    mosaic = f"""<section class="mosaic hide-m {rail("Featured")}" aria-label="Featured">
-        <article class="mosaic__item mosaic__lead" data-cat="trending" style="background-image:url(images/p014-meal-beans-posho.webp);background-position:50% 55%"><span class="chip">Nourish &amp; Thrive</span><div class="mosaic__bar"><a href="nourish-and-thrive.html#meals">Real food, real meals: everyday plates built from food you already know</a></div></article>
-        <article class="mosaic__item" data-cat="media" style="background-image:url(images/p022-susan-suit.webp);background-position:50% 18%"><span class="chip chip--media">Women Prosper</span><div class="mosaic__bar"><a href="women-prosper.html">Build an additional income while growing in confidence</a></div></article>
-        <article class="mosaic__item" data-cat="events" style="background-image:url(images/p018-susan-seated.webp);background-position:50% 55%"><span class="chip chip--events">Speaking</span><div class="mosaic__bar"><a href="speaking-and-workshops.html">Talks and workshops for your next event</a></div></article>
-      </section>"""
-
     top = f"""      <h1 class="visually-hidden">{ORG}: Nutrition &amp; Wellness Coach</h1>
       <section class="hero" data-hero aria-roledescription="carousel" aria-label="Featured">
         {sl}
         <div class="hero__dots">{dots}</div>
       </section>
-      <section class="quick" aria-label="Quick links"><div class="quick__grid {rail("Quick links")}">{tiles}</div></section>
-      {mosaic}"""
+      <section class="quick" aria-label="Quick links"><div class="quick__grid {rail("Quick links")}">{tiles}</div></section>"""
 
     welcome = section(f"""<div class="split">
           <div class="prose">
@@ -659,7 +657,7 @@ def body_contact():
             </div>
             <div class="grid {rail("Contact details")}" style="gap:16px;margin-top:24px">{cards}</div>
             <h3 class="contact-follow__title">Follow along</h3>
-            <ul class="contact-follow">{"".join(f'<li><a href="{u}" target="_blank" rel="noopener">{icon(i)}<span><b>{n}</b>{hdl}</span></a></li>' for i, n, hdl, u in SOCIAL)}</ul>
+            <ul class="contact-follow">{"".join(f'<li><a href="{u}" target="_blank" rel="noopener">{soc(i)}<span><b>{n}</b>{hdl}</span></a></li>' for i, n, hdl, u in SOCIAL)}</ul>
           </div>
           <div class="panel-grey">{form}</div>
         </div>""", first=True)

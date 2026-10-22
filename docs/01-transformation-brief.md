@@ -138,5 +138,10 @@ Old files (`p005`, `p006`, `p008`) are no longer referenced and can be deleted.
 | Speaking boxes looked like ten continuous ones (item 8) | The six sessions are now photo tiles: greyscale photo under ONE flat green wash, each with its own wash and icon-disc colour (gold, pink, olive, light gold, sage). The four qualities stay as light boxes, separated by a divider reading "All sessions are customised to you, to be:" |
 | Frame width differs when moving between pages | Measured identical (1200px sheet) on every page at nine window sizes. In Mark's Chrome the pages are opened as local files; Chrome remembers a separate zoom level for each local file, so one page can be at a different zoom than another. See `02-open-items.md` item 16 |
 
+## Phase 10: Home strip removed, equal top-bar tab, branded social badges
+- The three stacked "Featured" photo strips on Home (the blueprint's news mosaic) were redundant with the quick tiles and the venture cards, so they are gone (they were already hidden on phones).
+- The top-bar tab is the same size on every page: each tab carries an invisible copy of the Home title ("Nutrition & Wellness Coach"), which sets the width whatever the font (`.topbar__ghost` in `client.css`). Measured 420.7px wide on all five pages at 1300, 1000 and 800px windows.
+- Social icons are round badges in each network's own colour so visitors recognise them: Instagram red-pink `#e1306c`, Facebook blue `#1877f2`, TikTok black (thin light ring on dark backgrounds). Flat colours, no gradient. In `client.css` (`.soc`), built by `soc()` in `build_site.py`. These are the only non-palette colours on the site, used only for these badges.
+
 ## Checking page length on a phone
 `python3` with Playwright: open each page at 390x844 and divide `document.documentElement.scrollHeight` by 844.

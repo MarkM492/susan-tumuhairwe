@@ -36,7 +36,11 @@ html { overflow-y: scroll; scrollbar-gutter: stable; -webkit-text-size-adjust: 1
 /* ---------- 2. HEADER / BRAND / NAV ---------- */
 /* top bar: the tab's slanted edge is a leafy branch (gold stem, leaves growing into the bar) */
 .topbar__title { padding: 0; background: none; clip-path: none; align-items: stretch; }
-.topbar__text { display: flex; align-items: center; padding: 0 16px 0 var(--gutter); background: var(--c-primary); }
+.topbar__text { display: grid; align-items: center; padding: 0 16px 0 var(--gutter); background: var(--c-primary); }
+/* every page's tab is as wide as the longest one (the Home title): an invisible copy of it sets the width, so the tab never changes size between pages */
+.topbar__text > * { grid-area: 1 / 1; white-space: nowrap; }
+.topbar__ghost { visibility: hidden; pointer-events: none; }
+.topbar__label { justify-self: start; }
 .topbar__branch { display: block; flex: none; margin-left: -1px; }
 .topbar__branch .tb-fill { fill: var(--c-primary); }
 .topbar__branch .tb-leaf { fill: var(--c-accent); }
@@ -477,15 +481,25 @@ html { overflow-y: scroll; scrollbar-gutter: stable; -webkit-text-size-adjust: 1
 
 /* ---------- 12. SOCIAL HANDLES (top bar, footer, contact) ---------- */
 .topbar__social { gap: 16px; }
+/* social badges wear each network's own colour so visitors recognise them at a glance */
+.soc { --soc: #333; display: inline-grid; place-items: center; flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--soc); color: #fff; font-size: 15px; box-shadow: 0 0 0 1px rgba(255, 255, 255, .28); transition: transform .2s; }
+.soc .icon { width: 1em; height: 1em; }
+.soc--instagram { --soc: #e1306c; }
+.soc--facebook { --soc: #1877f2; }
+.soc--tiktok { --soc: #000; box-shadow: 0 0 0 1px rgba(255, 255, 255, .5); }
+a:hover > .soc { transform: scale(1.12); }
 .topbar__social .topbar__soc:first-of-type { margin-left: 6px; padding-left: 22px; border-left: 1px solid color-mix(in srgb, #fff 35%, transparent); }
 .topbar__social .topbar__soc a { font-size: 16px; }
+.topbar__social .topbar__soc a:hover { color: #fff; }
 .footer__social { margin-top: 18px; padding-top: 18px; border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent); }
+.footer__social li { display: flex; align-items: center; gap: 12px; padding-left: 0; }
+.footer__social .soc { width: 26px; height: 26px; font-size: 14px; }
 .footer__social a { overflow-wrap: anywhere; }
 .contact-follow__title { margin: 40px 0 16px; font-size: 20px; color: var(--c-navy); }
 .contact-follow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .contact-follow a { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border: 1px solid var(--c-border, #dfe6e1); border-radius: 12px; color: inherit; text-decoration: none; background: #fff; transition: border-color .2s, transform .2s; }
 .contact-follow a:hover { border-color: var(--c-sprinkle); transform: translateY(-2px); }
-.contact-follow .icon { flex: none; width: 24px; height: 24px; color: var(--c-accent); }
+.contact-follow .soc { width: 40px; height: 40px; font-size: 21px; box-shadow: none; }
 .contact-follow span { display: grid; min-width: 0; font-size: 15px; overflow-wrap: anywhere; }
 .contact-follow b { font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--c-muted, #5b6b62); font-weight: 600; }
 @media (max-width: 767px) {
