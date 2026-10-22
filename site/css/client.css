@@ -469,3 +469,23 @@ html { overflow-y: scroll; scrollbar-gutter: stable; -webkit-text-size-adjust: 1
 @media (prefers-reduced-motion: reduce) {
   .anim { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
+
+/* ---------- 12. SOCIAL HANDLES (top bar, footer, contact) ---------- */
+.topbar__social { gap: 16px; }
+.topbar__social .topbar__soc:first-of-type { margin-left: 6px; padding-left: 22px; border-left: 1px solid color-mix(in srgb, #fff 35%, transparent); }
+.topbar__social .topbar__soc a { font-size: 16px; }
+.footer__social { margin-top: 18px; padding-top: 18px; border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent); }
+.footer__social a { overflow-wrap: anywhere; }
+.contact-follow__title { margin: 40px 0 16px; font-size: 20px; color: var(--c-navy); }
+.contact-follow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.contact-follow a { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border: 1px solid var(--c-border, #dfe6e1); border-radius: 12px; color: inherit; text-decoration: none; background: #fff; transition: border-color .2s, transform .2s; }
+.contact-follow a:hover { border-color: var(--c-sprinkle); transform: translateY(-2px); }
+.contact-follow .icon { flex: none; width: 24px; height: 24px; color: var(--c-accent); }
+.contact-follow span { display: grid; min-width: 0; font-size: 15px; overflow-wrap: anywhere; }
+.contact-follow b { font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--c-muted, #5b6b62); font-weight: 600; }
+@media (max-width: 767px) {
+  .topbar__social { gap: 14px; }
+  .topbar__social .topbar__soc:first-of-type { margin-left: 2px; padding-left: 14px; }
+  .contact-follow { grid-template-columns: 1fr; gap: 12px; }
+  .contact-follow__title { margin-top: 32px; text-align: center; }
+}

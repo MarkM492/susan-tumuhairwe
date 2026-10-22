@@ -17,9 +17,19 @@ OUT = os.path.join(HERE, "..", "site")
 ORG = "Susan Tumuhairwe"
 ROLE = "Nutrition &amp; Wellness Coach"
 EMAIL = "hello@susantumuhairwe.com"
-PHONE_DISPLAY = "+256 700 000 000"
-PHONE_TEL = "+256700000000"
-MAPS = "https://maps.google.com/?q=Kampala,Uganda"
+PHONE_DISPLAY = "+256 784 717 586"
+PHONE_TEL = "+256784717586"
+OFFICE = "Interservice Tower, Lumumba Avenue, Kampala"
+MAPS = "https://maps.google.com/?q=Interservice+Tower,+Lumumba+Avenue,+Kampala"
+# Social handles (owner supplied). Facebook has no handle yet, only the profile name, so it links to a name search:
+# replace FB_URL with the real profile link (see docs/02-open-items.md).
+FB_URL = "https://www.facebook.com/search/top?q=Susan%20Tumuhairwe"
+SOCIAL = [
+    ("instagram", "Instagram", "@Susan_assy", "https://www.instagram.com/susan_assy/"),
+    ("tiktok", "TikTok", "@Susan_assy", "https://www.tiktok.com/@susan_assy"),
+    ("tiktok", "TikTok (Women Prosper)", "@Women.Prosper5", "https://www.tiktok.com/@women.prosper5"),
+    ("facebook", "Facebook", "Susan Tumuhairwe", FB_URL),
+]
 YEAR = 2026
 SITE_URL = "https://cool-cannoli-89234f.netlify.app"   # replace with the final domain when known
 
@@ -107,9 +117,11 @@ def topbar():
     links = [
         (f"mailto:{EMAIL}", "Email Susan", "mail", "icon--stroke"),
         (f"tel:{PHONE_TEL}", "Call Susan", "phone", ""),
-        (MAPS, "Studio location, Kampala", "pin", ""),
+        (MAPS, "Office location: Interservice Tower, Lumumba Avenue, Kampala", "pin", ""),
     ]
     lis = "".join(f'<li><a href="{h}" aria-label="{n}">{icon(i, c)}</a></li>' for h, n, i, c in links)
+    lis += "".join(f'<li class="topbar__soc"><a href="{u}" aria-label="{n}: {hdl}" target="_blank" rel="noopener">{icon(i)}</a></li>'
+                   for i, n, hdl, u in SOCIAL)
     return f"""<div class="topbar">
       <p class="topbar__title"><span class="topbar__text">{ROLE}</span>{topbar_branch()}</p>
       <ul class="topbar__social">{lis}</ul>
@@ -177,8 +189,9 @@ def footer():
           <ul class="footer__list">
             <li>{si("mail")}<a href="mailto:{EMAIL}">{EMAIL}</a></li>
             <li>{icon("phone")}<a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a></li>
-            <li>{icon("pin")}<a href="{MAPS}">Studio, Kampala, Uganda</a></li>
+            <li>{icon("pin")}<a href="{MAPS}">{OFFICE}</a></li>
           </ul>
+          <ul class="footer__list footer__social">{"".join(f'<li>{icon(i)}<a href="{u}" target="_blank" rel="noopener" aria-label="{n}">{hdl}</a></li>' for i, n, hdl, u in SOCIAL)}</ul>
         </div>
         <div>
           <h3 class="footer__title">Explore</h3>
@@ -395,8 +408,8 @@ def body_home():
     welcome = section(f"""<div class="split">
           <div class="prose">
             <h2 class="heading-blue">Helping Women Build Healthier Lives, Stronger Confidence &amp; Greater Financial Freedom</h2>
-            <p>Hello, and welcome. I&rsquo;m {name_script()}, coach, speaker, and founder of <strong>Nourish &amp; Thrive</strong> and <strong>Women Prosper</strong>. Whatever brought you here today, you&rsquo;re in the right place.</p>
-            {more('<p>My passion is helping women improve their health through practical nutrition and lifestyle coaching, empowering them to build healthier, more fulfilling lives. I help women build sustainable habits, regain their energy and confidence, and create lasting wellbeing.</p><p class="lede">Coach &middot; Speaker &middot; Founder</p>', "Read more")}
+            <p>Hello and Welcome. I am <span class="script">Susan Assy Tumuhairwe</span>, a CPD-Certified Nutrition and Wellness Coach, entrepreneur, and speaker. I am passionate about helping people live healthier, more fulfilling lives.</p>
+            {more('<p>Through <strong>Nourish &amp; Thrive by Susan</strong>, I empower individuals, particularly women, to make informed health choices, build sustainable wellness habits, and take charge of their wellbeing through practical nutrition and lifestyle guidance.</p><p>Through <strong>Women Prosper</strong>, I inspire and empower women to explore entrepreneurship, develop their potential, and pursue financial independence.</p><p>As a speaker, I share practical insights on nutrition and wellness, personal development, women&rsquo;s empowerment, and entrepreneurship, inspiring individuals and communities to take positive steps towards lasting change.</p><p class="lede">My mission is simple: to educate, empower, and inspire people to nourish their health, grow their potential, and thrive in life.</p>', "Read more")}
             <div class="btn-row">
               {pill("Book a Consultation", "contact.html")}
               {pill("Explore the ventures", "#ventures", "blue", "arrow-right")}
@@ -514,7 +527,7 @@ def body_prosper():
               {pill("What you&rsquo;ll gain", "#gain", "blue", "arrow-right")}
             </div>
           </div>
-          {photo("p022-susan-suit.webp", "Susan Tumuhairwe in a tailored suit, studio portrait", 880, 1100, ratio="4/4.2", pos="50% 15%")}
+          {photo("p022-susan-suit.webp", "Susan Tumuhairwe in a tailored suit, portrait", 880, 1100, ratio="4/4.2", pos="50% 15%")}
         </div>""", first=True)
 
     gain = section(f"""<div class="prose" style="max-width:820px;margin:0 auto">
@@ -564,19 +577,19 @@ def body_speaking():
 
     expertise = section(heading("Six Sessions I&rsquo;m Asked for Most",
                                 "Every session is tailored to your audience, combining evidence-informed knowledge with practical strategies participants can apply immediately.") + f"""
-        """ + more(f"""<div class="panel-plain" style="margin-bottom:30px"><div class="grid grid--2 {rail("How I speak")}">""" +
-                        infobox("target", "Practical", "Simple and actionable strategies to implement immediately.") +
-                        infobox("users", "Engaging", "Interactive, thought-provoking, built for participation.") +
-                        infobox("book", "Evidence-informed", "Grounded in current nutrition, wellness and leadership principles.") +
-                        infobox("edit", "Tailored", "Customised to your event&rsquo;s goals, audience and objectives.") +
-                        '</div></div>' + f'<div class="grid grid--3 {rail("Session topics")}">' +
+        """ + more(f'''<div class="grid grid--3 {rail("Session topics")}">''' +
                         infobox("users", "Workplace Health &amp; Wellbeing", "Help your team improve their health, energy, resilience and productivity. Healthy employees are more engaged and better equipped to perform at their best.", "infobox--tint-blue") +
                         infobox("heart", "Women&rsquo;s Health", "Evidence-informed guidance on hormonal health, fertility, pregnancy, perimenopause and menopause, empowering women to make informed decisions.", "infobox--tint-grey infobox--dark-icon") +
                         infobox("clock", "Healthy Aging", "How nutrition, movement, sleep and other healthy habits help people maintain vitality, independence and quality of life as they grow older.", "infobox--tint-blue") +
                         infobox("bowl", "Nutrition for Everyday Life", "Simple, practical advice that helps individuals and families make healthier food choices. No restrictive diets, no unrealistic expectations.", "infobox--tint-grey infobox--dark-icon") +
                         infobox("sprout", "Leadership &amp; Personal Growth", "Strong leadership starts with personal growth: confidence, resilience, purpose, and influence that reaches workplaces and communities.", "infobox--tint-blue") +
                         infobox("shield-check", "Ethical Entrepreneurship", "How ethical leadership, genuine relationships and a service-first mindset create sustainable success, for entrepreneurs and teams building with integrity.", "infobox--tint-grey infobox--dark-icon") +
-                        "</div>", "I want to know more", chips=["Workplace wellbeing", "Women&rsquo;s health", "Healthy aging", "Everyday nutrition", "Leadership", "Ethical business"]), sid="expertise")
+                        "</div>" + f'''<div class="panel-plain" style="margin-top:56px"><div class="grid grid--2 {rail("How I speak")}">''' +
+                        infobox("target", "Practical", "Simple and actionable strategies to implement immediately.") +
+                        infobox("users", "Engaging", "Interactive, thought-provoking, built for participation.") +
+                        infobox("book", "Evidence-informed", "Grounded in current nutrition, wellness and leadership principles.") +
+                        infobox("edit", "Tailored", "Customised to your event&rsquo;s goals, audience and objectives.") +
+                        "</div></div>", "I want to know more", chips=["Workplace wellbeing", "Women&rsquo;s health", "Healthy aging", "Everyday nutrition", "Leadership", "Ethical business"]), sid="expertise")
 
     feedback = section("""<div class="prose" style="max-width:820px;margin:0 auto">
           <h2 class="heading-blue heading-centre">The Real Measure Is the Impact on the People in the Room</h2>
@@ -592,7 +605,7 @@ def body_speaking():
 def body_contact():
     cards = (infobox("mail", "Email", f'<a href="mailto:{EMAIL}">{EMAIL}</a>', "infobox--tint-blue") +
              infobox("phone", "Phone / WhatsApp", f'<a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a>', "infobox--tint-grey infobox--dark-icon") +
-             infobox("pin", "Studio", f'<a href="{MAPS}">Kampala, Uganda</a>', "infobox--tint-blue"))
+             infobox("pin", "Office", f'<a href="{MAPS}">{OFFICE}</a>', "infobox--tint-blue"))
     # icon() for phone/pin are filled glyphs; infobox() uses stroked icons, so fix those two
     cards = cards.replace(si("phone"), icon("phone")).replace(si("pin"), icon("pin"))
     form = f"""<form class="form" name="contact" method="POST" action="contact.html" data-netlify="true" netlify-honeypot="bot-field" novalidate data-contact-form data-success="Thank you. Your message has been sent, and I will reply personally.">
@@ -631,6 +644,8 @@ def body_contact():
               </ul>
             </div>
             <div class="grid {rail("Contact details")}" style="gap:16px;margin-top:24px">{cards}</div>
+            <h3 class="contact-follow__title">Follow along</h3>
+            <ul class="contact-follow">{"".join(f'<li><a href="{u}" target="_blank" rel="noopener">{icon(i)}<span><b>{n}</b>{hdl}</span></a></li>' for i, n, hdl, u in SOCIAL)}</ul>
           </div>
           <div class="panel-grey">{form}</div>
         </div>""", first=True)

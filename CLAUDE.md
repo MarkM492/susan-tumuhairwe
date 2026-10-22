@@ -28,6 +28,6 @@ blueprint wins** (owner's standing rule).
 - Do not edit blueprint copies (`base/components/responsive.css`, `main.js`, `icons.js`) in this folder; change the
   blueprint and re-copy. Client-only CSS goes in `client.css`.
 - Banner photos use an inline `background-image` on `.banner`.
-- Keep Susan's wording. No invented social links, testimonials, statistics or "coming soon" notes.
+- Keep Susan's wording. Social handles come only from Susan (see `SOCIAL` in build_site.py); no invented links, testimonials, statistics or "coming soon" notes.
 - Placeholders still to replace are listed in `docs/02-open-items.md`.
 - Check at 390px and 1280px: no horizontal scroll, one h1 per page, no console errors.

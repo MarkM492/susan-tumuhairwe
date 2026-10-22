@@ -107,5 +107,17 @@ Feedback: add in-flow animations as the reader scrolls so they are drawn down th
 Rules: each element animates once, then the script removes the classes (`settle()`) so hover effects behave normally; reveal starts when an element is 9% inside the viewport; with `prefers-reduced-motion` or no IntersectionObserver nothing is hidden. Code: `client.js` section 3, `client.css` section 11.
 Checked at 1440px and 390px on all five pages: nothing left hidden, no horizontal overflow while slide-ins run, no script errors.
 
+## Phase 7: client comments, first batch
+Client feedback was split into batches. Done in this batch:
+
+| Comment | Change |
+|---|---|
+| Home does not mention Women Prosper or speaking | Welcome copy replaced with Susan's own text (intro visible, Nourish & Thrive / Women Prosper / speaker paragraphs and the mission behind "Read more" on phones) |
+| "Studio" | Replaced by the physical office: Interservice Tower, Lumumba Avenue, Kampala (footer, contact card, top-bar map link, aria label) |
+| Phone number | +256 784 717 586 everywhere |
+| Social handles | Top bar (desktop), footer (all sizes) and a "Follow along" block on Contact; TikTok glyph added to the blueprint icon set |
+| Speaking: six sessions first | The six session cards now come before the four qualities (Practical, Engaging, Evidence-informed, Tailored) |
+Next batch (not yet done): shorter Home scroll, new photos (women-only Women Prosper image, pregnancy photo edit, waist measuring tape, woman working out, supplements photo from Susan), box colours and icons on Speaking, business element in the title.
+
 ## Checking page length on a phone
 `python3` with Playwright: open each page at 390x844 and divide `document.documentElement.scrollHeight` by 844.

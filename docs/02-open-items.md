@@ -1,9 +1,9 @@
 # Open items before going live
 
-1. **Contact details are placeholders**: `hello@susantumuhairwe.com`, `+256 700 000 000`. Set in `tools/build_site.py` (EMAIL, PHONE_*), rebuild.
+1. **Contact details**: phone is now the real +256 784 717 586 and the office is Interservice Tower, Lumumba Avenue, Kampala (`PHONE_*`, `OFFICE`, `MAPS` in `tools/build_site.py`). The email `hello@susantumuhairwe.com` is still a placeholder: confirm the real address.
 2. **Netlify Forms**: submit a live test after the first deploy and confirm it appears in the dashboard.
 3. **Domain**: `SITE_URL` and the `og:image` use the current netlify address. Update when the final domain is known. No `sitemap.xml` / `robots.txt` yet.
-4. **Social links**: none exist yet; none were invented.
+4. **Social links**: handles supplied by Susan (Instagram @Susan_assy, TikTok @Susan_assy, TikTok @Women.Prosper5, Facebook "Susan Tumuhairwe"). The Instagram and TikTok links are built from those handles; **Facebook has no handle, so it links to a name search**. Replace `FB_URL` in `build_site.py` with her real profile or page link, and check the other three links open the right accounts.
 5. **Backdrop**: flat pale green (no wide, calm photo available). A calm landscape could be set via `--backdrop-image` later.
 6. **Images**: meal photos appear in both the service cards and the gallery; the studio photo (p021) has a strong purple background (greyscaled in the banner); a few originals are low-resolution.
 7. **Copy**: fixed (duplicate "No experience needed" card removed from Women Prosper).
