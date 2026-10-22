@@ -32,7 +32,7 @@ serve.ps1              local preview on http://localhost:8080
 - Each page picks its accent sprinkle with `<html data-venture="...">` (set per page in `PAGES` in `build_site.py`). Only small accents change (leaf marks, dividers, rail dots, banner tagline, Women Prosper's button); the palette never does.
 - `base.css`, `components.css`, `responsive.css`, `main.js`, `icons.js` are blueprint copies. Do not edit them here;
   improve the blueprint and copy them back.
-- Preview with `serve.ps1` (not by double-clicking the HTML).
+- Preview with `serve.ps1` (not by double-clicking the HTML). Over http all pages share one browser zoom; opened as files, Chrome remembers a separate zoom per file.
 
 ## Deploy (Netlify)
 Publish directory `site`. The contact form uses Netlify Forms; after the first deploy, submit a test message and

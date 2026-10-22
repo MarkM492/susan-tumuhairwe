@@ -167,6 +167,7 @@
     each('.quick__grid', function (g) { if (!g.classList.contains('anim')) seq(Array.prototype.slice.call(g.children), 'up', 0, 0.14); });
     each('.footer__grid > div', function (d, i) { tag(d, 'up', i * 0.14); });
     each('.form, .contact-layout > div', function (el, i) { tag(el, 'up', i * 0.14); });
+    each('.divider-label, .contact-follow__title', function (el) { tag(el, 'up', 0); });
 
     var settle = function (el) {                     // restore normal hover behaviour once the entrance is over
       var d = parseFloat(el.style.getPropertyValue('--anim-delay')) || 0;

@@ -131,5 +131,12 @@ Photos supplied by Susan (placed straight in `site/images/`, not through `optimi
 | Supplementation Guidance | `p028-supplement.webp`: used as supplied, including its headline ("The World's first phyto nutrient supplement since 1958") and the Nourish & Thrive logo; crop position tuned for phones in `client.css` section 13 |
 Old files (`p005`, `p006`, `p008`) are no longer referenced and can be deleted.
 
+## Phase 9: client comments, last batch
+| Comment | Change |
+|---|---|
+| Title should show the business (item 11) | The top-bar tab names the page's venture: Nourish & Thrive, Women Prosper, Speaking & Workshops, Get in Touch. Home keeps "Nutrition & Wellness Coach". Under the name "Susan Tumuhairwe" a small tagline now reads "Nutrition & Wellness Coach" (all pages, phones too) |
+| Speaking boxes looked like ten continuous ones (item 8) | The six sessions are now photo tiles: greyscale photo under ONE flat green wash, each with its own wash and icon-disc colour (gold, pink, olive, light gold, sage). The four qualities stay as light boxes, separated by a divider reading "All sessions are customised to you, to be:" |
+| Frame width differs when moving between pages | Measured identical (1200px sheet) on every page at nine window sizes. In Mark's Chrome the pages are opened as local files; Chrome remembers a separate zoom level for each local file, so one page can be at a different zoom than another. See `02-open-items.md` item 16 |
+
 ## Checking page length on a phone
 `python3` with Playwright: open each page at 390x844 and divide `document.documentElement.scrollHeight` by 844.

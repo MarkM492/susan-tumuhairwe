@@ -113,7 +113,12 @@ def topbar_branch():
             '<path class="tb-stem" d="M2 50 C10 36 18 20 27 0" fill="none"/>' + leaves + '</svg>')
 
 
-def topbar():
+# Top-bar tab text: Home keeps Susan's title; every other page names its own venture.
+TOPBAR_TEXT = {"Home": ROLE, "Nourish &amp; Thrive": "Nourish &amp; Thrive", "Women Prosper": "Women Prosper",
+               "Speaking &amp; Workshops": "Speaking &amp; Workshops", "Contact": "Get in Touch"}
+
+
+def topbar(active="Home"):
     links = [
         (f"mailto:{EMAIL}", "Email Susan", "mail", "icon--stroke"),
         (f"tel:{PHONE_TEL}", "Call Susan", "phone", ""),
@@ -123,7 +128,7 @@ def topbar():
     lis += "".join(f'<li class="topbar__soc"><a href="{u}" aria-label="{n}: {hdl}" target="_blank" rel="noopener">{icon(i)}</a></li>'
                    for i, n, hdl, u in SOCIAL)
     return f"""<div class="topbar">
-      <p class="topbar__title"><span class="topbar__text">{ROLE}</span>{topbar_branch()}</p>
+      <p class="topbar__title"><span class="topbar__text">{TOPBAR_TEXT.get(active, ROLE)}</span>{topbar_branch()}</p>
       <ul class="topbar__social">{lis}</ul>
     </div>"""
 
@@ -139,7 +144,7 @@ def header(active):
             items.append(f'<li class="nav__item"><a class="nav__link"{cur} href="{target}">{label}</a></li>')
     return f"""<header class="header">
       <a class="brand" href="index.html" aria-label="{ORG}, home">
-        <span class="brand__text">{ORG}</span>
+        <span class="brand__stack"><span class="brand__text">{ORG}</span><span class="brand__tag">{ROLE}</span></span>
       </a>
       <nav class="nav" aria-label="Primary">
         <ul class="nav__list">{"".join(items)}</ul>
@@ -274,7 +279,7 @@ def page(file, title, description, body, active=None, ban="", og_title=None, pre
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="site">
-    {topbar()}
+    {topbar(active)}
     {header(active)}
     {ban}
     <main id="main">
@@ -304,6 +309,15 @@ def infobox(ico, title, text, variant=""):
     v = f" {variant}" if variant else ""
     return (f'<div class="infobox{v}"><span class="infobox__icon">{si(ico)}</span>'
             f'<h3 class="infobox__title">{title}</h3><p class="infobox__text">{text}</p></div>')
+
+
+def session(ico, title, text, img, pos, wash, disc):
+    """Speaking topic tile: a photo under a flat green wash (greyscale photo, one flat tint, like the banners).
+    Each tile has its own wash and icon-disc colour so the six do not read as one block."""
+    return (f'<article class="session" style="--wash:{wash};--disc:{disc}">'
+            f'<span class="session__bg" style="background-image:url(images/{img});background-position:{pos}"></span>'
+            f'<span class="session__icon">{si(ico)}</span>'
+            f'<h3 class="session__title">{title}</h3><p class="session__text">{text}</p></article>')
 
 
 def service(img, alt, title, text, badge, href, label, cutout=False, pos=None, badge_logo=None):
@@ -578,13 +592,13 @@ def body_speaking():
     expertise = section(heading("Six Sessions I&rsquo;m Asked for Most",
                                 "Every session is tailored to your audience, combining evidence-informed knowledge with practical strategies participants can apply immediately.") + f"""
         """ + more(f'''<div class="grid grid--3 {rail("Session topics")}">''' +
-                        infobox("users", "Workplace Health &amp; Wellbeing", "Help your team improve their health, energy, resilience and productivity. Healthy employees are more engaged and better equipped to perform at their best.", "infobox--tint-blue") +
-                        infobox("heart", "Women&rsquo;s Health", "Evidence-informed guidance on hormonal health, fertility, pregnancy, perimenopause and menopause, empowering women to make informed decisions.", "infobox--tint-grey infobox--dark-icon") +
-                        infobox("clock", "Healthy Aging", "How nutrition, movement, sleep and other healthy habits help people maintain vitality, independence and quality of life as they grow older.", "infobox--tint-blue") +
-                        infobox("bowl", "Nutrition for Everyday Life", "Simple, practical advice that helps individuals and families make healthier food choices. No restrictive diets, no unrealistic expectations.", "infobox--tint-grey infobox--dark-icon") +
-                        infobox("sprout", "Leadership &amp; Personal Growth", "Strong leadership starts with personal growth: confidence, resilience, purpose, and influence that reaches workplaces and communities.", "infobox--tint-blue") +
-                        infobox("shield-check", "Ethical Entrepreneurship", "How ethical leadership, genuine relationships and a service-first mindset create sustainable success, for entrepreneurs and teams building with integrity.", "infobox--tint-grey infobox--dark-icon") +
-                        "</div>" + f'''<div class="panel-plain" style="margin-top:56px"><div class="grid grid--2 {rail("How I speak")}">''' +
+                        session("users", "Workplace Health &amp; Wellbeing", "Help your team improve their health, energy, resilience and productivity. Healthy employees are more engaged and better equipped to perform at their best.", "p024-women-team.webp", "50% 30%", "#16381f", "#c9a24a") +
+                        session("heart", "Women&rsquo;s Health", "Evidence-informed guidance on hormonal health, fertility, pregnancy, perimenopause and menopause, empowering women to make informed decisions.", "p025-pregnancy-smile.webp", "50% 20%", "#2f6b4f", "#d05a9e") +
+                        session("clock", "Healthy Aging", "How nutrition, movement, sleep and other healthy habits help people maintain vitality, independence and quality of life as they grow older.", "p020-susan-outdoors.webp", "50% 35%", "#3f5a22", "#8aa64a") +
+                        session("bowl", "Nutrition for Everyday Life", "Simple, practical advice that helps individuals and families make healthier food choices. No restrictive diets, no unrealistic expectations.", "p013-meal-tomato-egg.webp", "50% 50%", "#1e5a52", "#e6cd8a") +
+                        session("sprout", "Leadership &amp; Personal Growth", "Strong leadership starts with personal growth: confidence, resilience, purpose, and influence that reaches workplaces and communities.", "p019-susan-speaking.webp", "30% 30%", "#2d6a3e", "#6fae85") +
+                        session("shield-check", "Ethical Entrepreneurship", "How ethical leadership, genuine relationships and a service-first mindset create sustainable success, for entrepreneurs and teams building with integrity.", "p018-susan-seated.webp", "50% 55%", "#12301d", "#c9a24a") +
+                        "</div>" + '''<div class="divider-label"><span>All sessions are customised to you, to be:</span></div>''' + f'''<div class="panel-plain"><div class="grid grid--2 {rail("How I speak")}">''' +
                         infobox("target", "Practical", "Simple and actionable strategies to implement immediately.") +
                         infobox("users", "Engaging", "Interactive, thought-provoking, built for participation.") +
                         infobox("book", "Evidence-informed", "Grounded in current nutrition, wellness and leadership principles.") +
