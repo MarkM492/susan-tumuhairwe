@@ -428,9 +428,9 @@ def body_home():
                                "Each venture carries its own identity, and its own doorway into a healthier, more confident, more prosperous life.") + more(f"""<div class="services {rail("Ventures")}">""" + service("p013-meal-tomato-egg.webp", "Plate of sliced tomato, avocado and boiled eggs", "Nourish &amp; Thrive",
                                            "Practical nutrition, healthy habits and personalised coaching for hormones, gut, metabolism, bones and healthy aging.",
                                            "leaf", "nourish-and-thrive.html", "Build lasting health", badge_logo="logo-nourish-and-thrive.webp")
-                       + service("p008-team-laptop.webp", "Three women working together at a laptop", "Women Prosper",
+                       + service("p024-women-team.webp", "Four women smiling together around a laptop in an office", "Women Prosper",
                                  "Build an additional income while growing in confidence and leadership, inside a community of women who lift each other up.",
-                                 "sprout", "women-prosper.html", "Explore the opportunity", cutout=True, badge_logo="logo-women-prosper.webp")
+                                 "sprout", "women-prosper.html", "Explore the opportunity", pos="50% 30%", badge_logo="logo-women-prosper.webp")
                        + service("p007-speaker-mic.webp", "Susan speaking with a microphone", "Speaking &amp; Workshops",
                                  "Sessions that inspire healthier living, stronger leadership and personal growth, tailored to your audience.",
                                  "mic", "speaking-and-workshops.html", "Book a session", cutout=True)
@@ -475,18 +475,18 @@ def body_nourish():
     areas = section(heading("Six Areas I Work in Most",
                             "Whatever brought you here, whether it&rsquo;s nutrition, a health condition, or simply feeling your best, I&rsquo;m here to guide and support you every step of the way.") + f"""
         """ + more(f"""<div class="services {rail("Areas I work in")}">""" +
-                    service("p005-pregnancy-scan.webp", "Expectant mother holding an ultrasound scan", "Hormonal Health",
-                            "Hormones affect energy, mood, metabolism, fertility and sleep. I support women through every stage: PMS, PCOS, fertility, pregnancy, perimenopause and menopause.", "heart", ask, "Book a consultation") +
+                    service("p025-pregnancy-smile.webp", "Smiling expectant mother holding an ultrasound scan", "Hormonal Health",
+                            "Hormones affect energy, mood, metabolism, fertility and sleep. I support women through every stage: PMS, PCOS, fertility, pregnancy, perimenopause and menopause.", "heart", ask, "Book a consultation", pos="50% 12%") +
                     service("p010-meal-salad-box.webp", "Lunch box of mixed salad with boiled egg and avocado", "Gut Health",
                             "A healthy gut is the foundation of good health: better digestion, less bloating, a stronger microbiome, and natural detoxification working well.", "leaf", ask, "Book a consultation") +
-                    service("p017-meal-fish-greens.webp", "Plate of fish with greens and groundnuts", "Metabolic Health",
-                            "Healthy weight management, insulin resistance, type&nbsp;2 diabetes, blood pressure, fatty liver, cholesterol and low energy, through practical coaching.", "chart", ask, "Book a consultation") +
-                    service("p006-yoga.webp", "Woman sitting cross-legged in a calm meditation pose", "Bone &amp; Joint Health",
-                            "Strong bones and healthy joints keep you active and independent, with habits that protect bone health and support mobility.", "shield-check", ask, "Book a consultation", cutout=True) +
+                    service("p026-waist-measure.webp", "Woman measuring her waist with a tape, with a healthy meal in front of her", "Metabolic Health",
+                            "Healthy weight management, insulin resistance, type&nbsp;2 diabetes, blood pressure, fatty liver, cholesterol and low energy, through practical coaching.", "chart", ask, "Book a consultation", pos="50% 25%") +
+                    service("p027-stretch-workout.webp", "Woman stretching on a mat at home, working out", "Bone &amp; Joint Health",
+                            "Strong bones and healthy joints keep you active and independent, with habits that protect bone health and support mobility.", "shield-check", ask, "Book a consultation", pos="50% 50%") +
                     service("p020-susan-outdoors.webp", "Susan Tumuhairwe photographed outdoors", "Healthy Aging",
                             "Vitality, independence and quality of life as you grow older, through nourishing nutrition, regular movement, restorative sleep and preventive health.", "clock", ask, "Book a consultation", pos="50% 15%") +
-                    service("p015-meal-pumpkin-tray.webp", "Tray of pumpkin, beans and fresh tomato salad", "Supplementation Guidance",
-                            "Food comes first. But when age, stress, pregnancy or medication raise your needs, I help you choose supplements wisely, as a complement, never a replacement.", "book", ask, "Book a consultation") +
+                    service("p028-supplement.webp", "A hand holding a single phytonutrient supplement capsule", "Supplementation Guidance",
+                            "Food comes first. But when age, stress, pregnancy or medication raise your needs, I help you choose supplements wisely, as a complement, never a replacement.", "book", ask, "Book a consultation", pos="50% 0%") +
                     "</div>", "I want to know more", chips=["Hormonal", "Gut", "Metabolic", "Bone &amp; joint", "Healthy aging", "Supplements"]), sid="areas")
 
     meals_data = [("p013-meal-tomato-egg", "Plate of sliced tomato, avocado and boiled eggs", "Tomato, avocado &amp; egg"),

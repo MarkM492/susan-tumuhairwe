@@ -489,3 +489,8 @@ html { overflow-y: scroll; scrollbar-gutter: stable; -webkit-text-size-adjust: 1
   .contact-follow { grid-template-columns: 1fr; gap: 12px; }
   .contact-follow__title { margin-top: 32px; text-align: center; }
 }
+
+/* ---------- 13. CLIENT-SUPPLIED PHOTOS: phone crops ---------- */
+@media (max-width: 767px) {
+  .service__media img[src*="p028-supplement"] { object-position: 50% 26% !important; }  /* keep the headline and the capsule in the shallow phone crop */
+}

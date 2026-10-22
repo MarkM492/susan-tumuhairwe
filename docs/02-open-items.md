@@ -14,3 +14,4 @@
 12. **Frame width**: measured identical across pages; if Mark still sees a difference on a device, get the window width or a screenshot.
 13. **Taglines in script**: the banner taglines for Speaking and Contact ("Healthy people build thriving organisations.", "I read every message myself.") and are written from her copy; adjust in `build_site.py` (`TAGLINES`).
 14. **Tab bar logos** are small on phones (30px); the Nourish & Thrive logo is fine line art, so a simplified mark would read better at that size.
+15. **Supplement photo** carries the text "The World's first phyto nutrient supplement since 1958". It is used as supplied; confirm Susan wants that claim on the site, or crop it out (see docs/01 phase 8).

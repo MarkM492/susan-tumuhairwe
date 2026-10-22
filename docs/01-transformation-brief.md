@@ -117,7 +117,19 @@ Client feedback was split into batches. Done in this batch:
 | Phone number | +256 784 717 586 everywhere |
 | Social handles | Top bar (desktop), footer (all sizes) and a "Follow along" block on Contact; TikTok glyph added to the blueprint icon set |
 | Speaking: six sessions first | The six session cards now come before the four qualities (Practical, Engaging, Evidence-informed, Tailored) |
-Next batch (not yet done): shorter Home scroll, new photos (women-only Women Prosper image, pregnancy photo edit, waist measuring tape, woman working out, supplements photo from Susan), box colours and icons on Speaking, business element in the title.
+Next batch (not yet done): shorter Home scroll, box colours and icons on Speaking, business element in the title. The photo comments are done (phase 8).
+
+## Phase 8: client photos
+Photos supplied by Susan (placed straight in `site/images/`, not through `optimise_images.py`):
+
+| Where | Photo |
+|---|---|
+| Home, Women Prosper card | `p024-women-team.webp`: four women (the previous photo included a man) |
+| Nourish & Thrive, Hormonal Health | `p025-pregnancy-smile.webp` (replaces the ultrasound close-up) |
+| Metabolic Health | `p026-waist-measure.webp` (tape around the waist) |
+| Bone & Joint Health | `p027-stretch-workout.webp` (woman working out) |
+| Supplementation Guidance | `p028-supplement.webp`: used as supplied, including its headline ("The World's first phyto nutrient supplement since 1958") and the Nourish & Thrive logo; crop position tuned for phones in `client.css` section 13 |
+Old files (`p005`, `p006`, `p008`) are no longer referenced and can be deleted.
 
 ## Checking page length on a phone
 `python3` with Playwright: open each page at 390x844 and divide `document.documentElement.scrollHeight` by 844.
