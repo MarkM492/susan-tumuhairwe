@@ -244,7 +244,7 @@ def banner(title, crumbs, image, venture):
         extra = '<span class="banner__branch" aria-hidden="true"></span>'
         cls = " banner--branch"
     return f"""<section class="banner{cls}" aria-label="Page title" style="background-image:url(images/{image})">
-      <div class="banner__text">{kick}<h1 class="banner__title">{title}</h1><ol class="crumbs">{trail}</ol></div>
+      <div class="banner__text"><h1 class="banner__title">{title}</h1>{kick}<ol class="crumbs">{trail}</ol></div>
       {extra}
     </section>"""
 

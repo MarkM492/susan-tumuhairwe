@@ -143,5 +143,7 @@ Old files (`p005`, `p006`, `p008`) are no longer referenced and can be deleted.
 - The top-bar tab is the same size on every page: each tab carries an invisible copy of the Home title ("Nutrition & Wellness Coach"), which sets the width whatever the font (`.topbar__ghost` in `client.css`). Measured 420.7px wide on all five pages at 1300, 1000 and 800px windows.
 - Social icons are round badges in each network's own colour so visitors recognise them: Instagram red-pink `#e1306c`, Facebook blue `#1877f2`, TikTok black (thin light ring on dark backgrounds). Flat colours, no gradient. In `client.css` (`.soc`), built by `soc()` in `build_site.py`. These are the only non-palette colours on the site, used only for these badges.
 
+- Banners now read title first, then the script tagline (e.g. "Nourish & Thrive" then "Simple habits, real transformation."), then the breadcrumb. Order is set in `banner()` in `build_site.py`.
+
 ## Checking page length on a phone
 `python3` with Playwright: open each page at 390x844 and divide `document.documentElement.scrollHeight` by 844.

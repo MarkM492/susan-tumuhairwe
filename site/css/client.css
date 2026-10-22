@@ -93,7 +93,7 @@ html { overflow-y: scroll; scrollbar-gutter: stable; -webkit-text-size-adjust: 1
 .banner::before { content: ""; position: absolute; inset: 0; background: color-mix(in srgb, var(--c-navy) 82%, transparent); }
 .banner__text, .banner__emblem, .banner__branch { position: relative; z-index: 1; }
 .banner { justify-content: space-between; border-bottom: 4px solid var(--c-sprinkle); }
-.banner__kicker { margin: 0 0 -2px; font-size: 30px; line-height: 1.1; color: var(--c-sprinkle-soft); }
+.banner__kicker { margin: 4px 0 6px; font-size: 30px; line-height: 1.1; color: var(--c-sprinkle-soft); }
 .banner__emblem {
   flex: none; display: grid; place-items: center; width: 196px; height: 196px; padding: 14px; margin-right: 24px;
   background: #fff; border-radius: 50%; border: 4px solid var(--c-sprinkle);
@@ -260,7 +260,7 @@ html { overflow-y: scroll; scrollbar-gutter: stable; -webkit-text-size-adjust: 1
   /* inner-page banner: compact row, emblem on the left */
   .banner { height: 108px; padding: 0 var(--gutter); gap: 14px; justify-content: flex-start; text-align: left; }
   .banner__title { font-size: 27px; line-height: 32px; }
-  .banner__kicker { font-size: 19px; margin: 0; }
+  .banner__kicker { font-size: 19px; margin: 2px 0 4px; }
   .crumbs { display: none; }
   .banner__emblem { order: -1; width: 72px; height: 72px; padding: 6px; margin: 0; border-width: 3px; }
   .banner__branch { width: 70%; opacity: .12; }
